@@ -1,0 +1,39 @@
+<project name="PractSem04" default="default" basedir=".">
+    <description>Builds, tests, and runs the project PractSem04.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Define la propiedad libs.dir -->
+    <property name="libs.dir" value="lib"/>
+
+    <!-- Opciones de compilación -->
+    <property name="javac.source" value="12"/>
+    <property name="javac.target" value="12"/>
+    
+    <!-- Configuración de classpath para la compilación -->
+    <path id="classpath">
+        <fileset dir="${basedir}/${libs.dir}">
+            <include name="GeneradorPDF.jar"/>
+            <include name="javaee-web-api-7.0.jar"/>
+            <include name="mysql-connector-j-8.1.0.jar"/>
+            <include name="mysql-connector-j-8.4.0.jar"/>
+            <include name="mysql-connector-java-8.0.30.jar"/>
+        </fileset>
+    </path>
+
+    <target name="-pre-compile">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac includeantruntime="false" destdir="${build.classes.dir}">
+            <src path="${src.dir}"/>
+            <classpath refid="classpath"/>
+            <compilerarg value="-source"/>
+            <compilerarg value="${javac.source}"/>
+            <compilerarg value="-target"/>
+            <compilerarg value="${javac.target}"/>
+            <!-- Otras opciones de compilación según sea necesario -->
+            <compilerarg value="-proc:none"/> <!-- Desactivar procesamiento de anotaciones -->
+        </javac>
+    </target>
+
+    <!-- Otros targets y configuraciones según sea necesario -->
+
+</project>

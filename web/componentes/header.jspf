@@ -1,0 +1,122 @@
+<%@ page pageEncoding="UTF-8" %>
+
+<div class="sidebar close">
+    <div class="logo-details">
+        <i class='bx bxl-gitlab' style='color:#ffffff' ></i>
+        <span class="logo_name"> H A K A I </span>
+    </div>
+    <form action="ValidarLogin" method="GET">  
+        <ul class="nav-links">
+            <li>
+                <div class="iocn-link">
+                    <a href="index.jsp">
+                        <i class="bx bx-home"></i>
+                        <span class="link_name">Incio</span>
+                    </a>
+                </div>
+            </li>
+
+
+
+
+
+            <%
+                // Verificar el tipo de usuario y mostrar enlaces correspondientes
+                if (Controler.ControlerUsuario.USUARIO != null && Controler.ControlerUsuario.USUARIO.getCargo() != null) {
+                    String cargo = Controler.ControlerUsuario.USUARIO.getCargo().getNombreCargo();
+
+                    if (cargo.equals("ADMINISTRADOR")) {
+            %>
+            <li>
+                <div class="iocn-link">
+                    <a>
+                        <i class='bx bx-user-pin'></i>
+                        <span class="link_name">Usuarios</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><p class="link_name text-light">Usuarios</p></li>
+                    <li><a href="ControlerUsuario?accion=listarUsuarios">Lista</a></li>
+                    <li><a href="ControlerUsuario?accion=nuevo">Nuevo</a></li>
+                </ul>
+            </li>
+            <%
+                    }
+                }
+            %>
+
+
+
+
+
+            <li>
+                <div class="iocn-link">
+                    <a >
+                        <i class='bx bxs-user-detail'></i>
+                        <span class="link_name">Clientes</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><p class="link_name text-light">Clientes</p></li>
+                    <li><a href="ControlerCliente?Op=Listar">Lista</a></li>
+                    <li><a href="ControlerCliente?Op=Nuevo">Nuevo</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link">
+                    <a >
+                        <i class='bx bx-spreadsheet'></i>
+                        <span class="link_name">Productos</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><p class="link_name text-light">Productos</p></li>
+                    <li><a href="ControlerProducto?Op=Listar">Lista</a></li>
+                    <li><a href="ControlerProducto?Op=Nuevo">Nuevo</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <div class="iocn-link">
+                    <a >
+                        <i class='bx bx-notepad'></i>
+                        <span class="link_name">Pedidos</span>
+                    </a>
+                    <i class="bx bxs-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
+                    <li><p class="link_name text-light">Pedidos</p></li>
+                    <li><a href="ControlerPedido?Op=Listar">Lista</a></li>
+                    <li><a href="ControlerPedido?Op=Nuevo">Nuevo</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+    </form>
+
+    <div class="profile-details">
+        <div class="profile-content">
+            <img src="img/miRey.gif" alt="profileImg" />
+        </div>
+        <div class="name-job" style="font-family: "Manrope", sans-serif;">
+             <div class="profile_name">HAKAI</div>
+            <div class="job">PERSONAL</div>
+        </div>
+
+        <!-- Botón de cerrar sesión fuera del formulario principal -->
+        <form action="CerrarSesion" method="post" >
+            <!--  <i class="bx bx-log-out"></i>-->
+            <button type="submit" class="btn-custom" >
+                <i class="bx bx-log-out"></i>
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
